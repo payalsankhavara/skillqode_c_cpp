@@ -66,7 +66,7 @@ int main()
         person1.counter();
     }
     cout<<"\n Total Transaction Count.. " <<Bank :: totalTransaction;
-    cout<<"\n Total Number Of Deposite Transaction Count.. " <<Bank::totalDepositeTransaction.;
+    cout<<"\n Total Number Of Deposite Transaction Count.. " <<Bank::totalDepositeTransaction;
     cout<<"\n Total Number Of Withdraw Transaction Count.. " <<Bank::totalWithdrawTransaction;
 
 
