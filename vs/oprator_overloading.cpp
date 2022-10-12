@@ -8,6 +8,7 @@ class loc
     loc (int,int);
     void show();
     loc operator+(loc);
+    
 };
 loc::loc()
 {
