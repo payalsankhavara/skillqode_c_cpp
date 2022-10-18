@@ -24,7 +24,8 @@ class B:public A
         cout<<"\n B destructor  called ...";
     }
 };
-class C: public A
+class C:
+| public A
 {
     public:
     C()
