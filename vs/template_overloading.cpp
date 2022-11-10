@@ -16,7 +16,7 @@ int main()
     display(12.40);
     display('G');
     display('G',1.25);
-    display('x',1.25);
+    display('x',25);
     display(25,1.25);
     return 0;
 }
