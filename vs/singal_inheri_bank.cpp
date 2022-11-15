@@ -1,31 +1,51 @@
 #include<iostream>
+#include<string.h>
 using namespace std;
 class Bank
 {
-    protected:
-        int accountBalance=0;
-    public:
-        int deposite_amount(int);
-        int withdraw_amount(int);
-};
-int Bank :: deposite_amount(int d_amt)
-{
-    accountBalance +  d_amt;
-}
-int Bank :: withdraw_amount(int w_amt)
-{
-    if (w_amt > accountBalance)
-    {
-       cout << "\n you not able to withdraw";  
-    }
-    else
-    {
-        accountBalance - w_amt;
-    }
+    int accountno;
+    string accountType;
+public:
+    void getAccountDetails();
+    void displayDetails();
     
-}
-class Saving : public Bank
-{
-    public:
-    int Show_balance();
 };
+class Person : public Bank
+{
+    
+public:
+    string name;
+    void read();
+    void disply();
+};
+void Person::read()
+{
+    cout<<"\n Account Holder Name.. ";
+    cin>>name;
+}
+void Person::disply()
+{
+    cout<<"\n Account Holder Name.. "<<name<<endl;
+}
+void Bank::getAccountDetails()
+{
+    cout<<"\n Account Number..";
+    cin>>accountno;
+    cout<<"\n Account Type.. ";
+    cin>>accountType;
+}
+void Bank::displayDetails()
+{
+    cout<<" Account Number.."<<accountno<<endl;
+    cout<<" Account Type.. "<<accountType<<endl;
+}
+int main()
+{
+   Bank b;
+   Person p;
+   p.read();
+   b.getAccountDetails();
+   p.disply();
+   b.displayDetails();
+}
+   

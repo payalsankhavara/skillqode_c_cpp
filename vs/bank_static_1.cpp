@@ -1,78 +1,60 @@
- #include<iostream>
+#include<iostream>
+#include<stdlib.h>
 using namespace std;
 class Bank
 {
+        int bal;
     public:
-    static int accountBalance;
-    static int totalTransaction;
-    static int totalDepositeTransaction;
-    static int totalWithdrawTransaction;
-    string name;
-   
-    
-    void getInfo()
-    {
-        cout<<"\n Enter Account Holder Name... " ;
-        cin>>name;
-    }
-    Bank()
-    {
-        accountBalance=5000;
-        cout<<"\n Account Balance.. " <<accountBalance;
-    }
-    Bank (int initbal)
-    {
-        accountBalance = initbal;
-    }
-    void showAccountDetails()
-    {
-        cout<<"\n Enter Withdraw Balance.. ";
-        cin>>totalWithdrawTransaction;
-        cout<<"\n Total Amount : "<<accountBalance - totalWithdrawTransaction;
-        cout<<"\n Enter Deposit Balance.. ";
-        cin>>totalDepositeTransaction;
-        cout<<"\n Total Amount : "<<(accountBalance - totalWithdrawTransaction) + totalDepositeTransaction;
-        
-    }
-   /* void setcounter(int x,int y,int z)
-    {
-        totalTransaction=x;
-        totalWithdrawTransaction=y;
-        totalDepositeTransaction=z;
-    }*/
-    void counter()
-    {
-        accountBalance ++;
-        totalTransaction ++;
-        totalDepositeTransaction ++;
-        totalWithdrawTransaction ++;
-        accountBalance=totalWithdrawTransaction+totalDepositeTransaction;
-    }
+        static int total_deposite_amt,total_withdraw_amt,total_trans;
+        Bank(int bal)
+        {
+            total_deposite_amt += bal;
+            this->bal=bal;
+        }
+        int showBalance()
+        {
+            return bal;
+        }
+        int deposite(int deposite)
+        {
+            total_deposite_amt += deposite;
+            total_trans ++;
+            bal=bal+deposite;
+            return bal;
+        }
+        int withdraw(int withdraw)
+        {
+            if(bal > withdraw)
+            {
+                total_trans ++;
+                total_withdraw_amt += withdraw;
+                bal=bal- withdraw;
+                return bal;
+            }
+            else
+            {
+                cout<<"\n Check Your Balance:";
+                return 1;
+            }
+        }
 };
-int Bank :: accountBalance=0;
-int Bank :: totalTransaction=0;
-int Bank :: totalDepositeTransaction=0;
-int Bank :: totalWithdrawTransaction=0;
-
+int  Bank :: total_deposite_amt =0;
+int  Bank :: total_withdraw_amt=0;
+int  Bank :: total_trans=0;
 int main()
 {
-    Bank person1;
-    int i;
-    for(i=1;i<=2;i++)
-    {
-        person1.getInfo();
-       // person1.setcounter(1,2,2);
-        person1.showAccountDetails();
-        person1.counter();
-    }
-    cout<<"\n Total Transaction Count.. " <<Bank :: totalTransaction;
-    cout<<"\n Total Number Of Deposite Transaction Count.. " <<Bank::totalDepositeTransaction;
-    cout<<"\n Total Number Of Withdraw Transaction Count.. " <<Bank::totalWithdrawTransaction;
+    system("CLS");
+    int ch,dp=0,wt;
+    Bank a(100),b(200);
+    a.deposite(50);
+    b.deposite(50);
+    b.withdraw(50);
 
-
-
-
-
-
-   
+    cout<<"\n Total Deposite amt:"<<Bank::total_deposite_amt;
+    cout<<"\n Total WithDraw Amt:"<<Bank::total_withdraw_amt;
+    cout<<"\n Total No Of Transation:"<<Bank::total_trans;
+    cout<<"\n Balance a:"<<a.showBalance();
+    cout<<"\n Balance b:"<<b.showBalance();
 }
+
+
